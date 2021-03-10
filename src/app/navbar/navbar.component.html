@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse m-2 w-100" id="navbarNav">
+      <ul class="navbar-nav flex-grow-1 justify-content-end">
+        <!-- <li class="nav-item mr-auto" *ngIf="auth.isLoggedIn">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fas fa-search"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </li> -->
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./voucher"
+            >Voucher</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./storage"
+            >Kho</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./staff"
+            >Staff</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./menu"
+            >Menu</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./client"
+            >Khách</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./expense"
+            >Chi tiêu</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./orders"
+            >Orders</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./history"
+            >Lịch Sử</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./revenue"
+            >Doanh Thu</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="!auth.isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" routerLink="./login"
+            >Log In</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isLoggedIn">
+          <span class="nav-link" (click)="logOut()">Log Out</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

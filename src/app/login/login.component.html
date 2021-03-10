@@ -1,0 +1,92 @@
+<div
+  class="container login-form bg-light p-5 w-75 border border-secondary mt-5"
+  *ngIf="!isSignedUp"
+>
+  <form class="col-sm-6 mx-auto" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter email"
+        #emailSignIn
+        required
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        #passwordSignIn
+        required
+      />
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="my-2">
+      <button
+        type="submit"
+        class="btn btn-primary mr-2"
+        (click)="onSignIn(emailSignIn.value, passwordSignIn.value)"
+      >
+        Login
+      </button>
+      <button class="btn btn-primary mx-2" (click)="navigateSignUp()">
+        Sign Up
+      </button>
+    </div>
+    <br />
+    <small class="text-danger"> {{ inError }} </small>
+  </form>
+</div>
+
+<!-- ---------------------------------SIGN UP FORM --------------------------------------------------->
+<div
+  class="container login-form bg-light p-5 w-75 border border-secondary mt-5"
+  *ngIf="isSignedUp"
+>
+  <form class="col-sm-6 mx-auto">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter email"
+        #emailSignUp
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        #passwordSignUp
+      />
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="my-2">
+      <button
+        class="btn btn-primary mr-2"
+        (click)="onSignUp(emailSignUp.value, passwordSignUp.value)"
+      >
+        Sign Up
+      </button>
+      <button class="btn btn-primary mr-2" (click)="back()">Back</button>
+      <small class="text-danger"> {{ upError }} </small>
+    </div>
+  </form>
+</div>

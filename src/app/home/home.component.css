@@ -1,0 +1,10 @@
+button {
+  border-radius: 12px;
+  padding: 4px;
+}
+.list-group-item:hover {
+  background-color: #339fff;
+}
+table {
+  font-size: medium;
+}

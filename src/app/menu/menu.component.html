@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-2 pr-2 bg-light border border-rounded">
+      <form class="bg-light p-3" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+        <h3>Add New Client</h3>
+        <!-- NAME INPUT  -->
+        <label class="mt-1" for="exampleInputName"
+          >Product Name <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Enter name"
+          formControlName="name"
+          (blur)="log()"
+        />
+
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="get('name').touched && get('name').invalid"
+        >
+          <small *ngIf="get('name').errors.required">Name is required</small>
+          <small *ngIf="get('name').errors.maxlength">Name is too long</small>
+        </div>
+        <!-- PHONE INPUT -->
+        <label class="mt-1" for="exampleInputPrice"
+          >Product Price <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="price"
+          placeholder="Enter Price"
+          formControlName="price"
+          (blur)="log()"
+        />
+
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="get('price').touched && get('price').invalid"
+        >
+          <small *ngIf="get('price').errors.required">Price is required</small>
+          <small *ngIf="get('price').errors.maxlength"
+            >Price is too short</small
+          >
+        </div>
+
+        <label class="mt-1" for="exampleInputPrice"
+          >Select Category <span class="text-danger">*</span></label
+        >
+        <select class="custom-select" formControlName="category">
+          <option value="Tea">Tea</option>
+          <option value="Coffee">Coffee</option>
+          <option value="Juice">Juice</option>
+        </select>
+
+        <div class="mt-3">
+          <button
+            class="mx-1 bg-success text-white"
+            type="submit"
+            mat-raised-button
+            [disabled]="!menuForm.valid || editMode"
+          >
+            Add
+          </button>
+          <button
+            class="mx-1 bg-primary"
+            mat-raised-button
+            (click)="updateDrink(selectedDrink)"
+            *ngIf="editMode"
+          >
+            Edit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ----------------------------------------MENU LIST-------------------------------------------------------- -->
+
+    <div class="col-sm-9">
+      <table class="table table-bordered table-hover bg-light">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Categories</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of drinks">
+            <td class="align-middle">{{ item.name }}</td>
+            <td class="align-middle">{{ item.price }}</td>
+            <td class="d-flex justify-content-between">
+              <span class="p-2"> {{ item.category }} </span>
+              <span>
+                <button
+                  class="mx-1"
+                  mat-raised-button
+                  color="warn"
+                  (click)="deleteDrink(item)"
+                >
+                  Delete
+                </button>
+                <button
+                  mat-raised-button
+                  class="bg-success"
+                  (click)="editDrink(item)"
+                >
+                  Edit
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
